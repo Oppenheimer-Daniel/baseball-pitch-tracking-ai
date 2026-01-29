@@ -10,6 +10,7 @@ def extract_frames():
         os.makedirs(output_folder)
         print(f"Created folder: {output_folder}")
         
+    # Open the video file
     cap = cv2.VideoCapture(video_path)
     
     if not cap.isOpened():
@@ -19,6 +20,7 @@ def extract_frames():
     count = 0
     print("Extracting frames... please wait.")
     
+    # Read and save frames
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
@@ -31,6 +33,7 @@ def extract_frames():
         cv2.imwrite(file_path, frame)
         count += 1
         
+    # Release the video capture object
     cap.release()
     print(f"Done! {count} images saved to {output_folder}")
 
